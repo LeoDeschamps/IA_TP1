@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="IAMDPLib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/IAMDPLib.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/javadoc" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

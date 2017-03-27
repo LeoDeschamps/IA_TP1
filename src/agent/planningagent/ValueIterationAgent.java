@@ -1,13 +1,8 @@
 package agent.planningagent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import util.HashMapUtil;
-
-import java.util.HashMap;
 
 import environnement.Action;
 import environnement.Etat;
@@ -32,11 +27,15 @@ public class ValueIterationAgent extends PlanningValueAgent{
 	 * fonction de valeur des etats
 	 */
 	protected HashMap<Etat,Double> V;
+
+    /**
+     * Liste des actions de l'agent
+     */
+    protected Map<Etat, List<Action>> returnactions = new HashMap<Etat, List<Action>>();
 	
 	/**
 	 * 
 	 * @param gamma
-	 * @param nbIterations
 	 * @param mdp
 	 */
 	public ValueIterationAgent(double gamma,  MDP mdp) {
@@ -45,6 +44,7 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		V = new HashMap<Etat,Double>();
 		for (Etat etat:this.mdp.getEtatsAccessibles()){
 			V.put(etat, 0.0);
+            this.returnactions.put(etat, new ArrayList<Action>());
 		}
 		this.notifyObs();
 		
@@ -70,18 +70,64 @@ public class ValueIterationAgent extends PlanningValueAgent{
 		//lorsque l'on planifie jusqu'a convergence, on arrete les iterations lorsque
 		//delta < epsilon 
 		this.delta=0.0;
-		//*** VOTRE CODE
-		
-		
-		// mise a jour vmax et vmin pour affichage du gradient de couleur:
+
+        this.vmax = 0;
+        this.vmin = 1;
+
+		Iterator<Etat> youpi = this.V.keySet().iterator();
+		while(youpi.hasNext()) {
+            Etat etat = youpi.next();
+            double val = this.V.get(etat);
+		    if(val > vmax) vmax = val;
+		    else if(val < vmin) vmin = val;
+        }
+
+
+		this.bellman();
+        // mise a jour vmax et vmin pour affichage du gradient de couleur:
 		//vmax est la valeur  max de V  pour tout s
 		//vmin est la valeur min de V  pour tout s
 		// ...
-		
+
 		//******************* laisser la notification a la fin de la methode	
 		this.notifyObs();
 	}
-	
+
+	public void bellman() {
+        double somme = 0.0;
+        double calcul = 0;
+
+        Map<Etat, Double> update = new HashMap<Etat, Double>();
+        //*** VOTRE CODE
+        for(Etat etat : this.mdp.getEtatsAccessibles()) {
+            for(Action action : this.mdp.getActionsPossibles(etat)) {
+                calcul = 0;
+                try {
+                    Map<Etat, Double> map = this.mdp.getEtatTransitionProba(etat, action);
+                    Iterator<Etat> iterator = map.keySet().iterator();
+                    while(iterator.hasNext()) {
+                        Etat etat1 = iterator.next();
+                        calcul += map.get(etat1) * (this.mdp.getRecompense(etat, action, etat1) + (getGamma() * this.V.get(etat1)));
+                    }
+                    if(calcul > somme) {
+                        if(this.returnactions.get(etat).isEmpty()) this.returnactions.get(etat).add(action);
+                        else this.returnactions.get(etat).set(0, action);
+                        somme = calcul;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            update.put(etat, somme);
+            somme = 0;
+        }
+
+        Iterator<Etat> etatIterator = update.keySet().iterator();
+        while (etatIterator.hasNext()) {
+            Etat etat = etatIterator.next();
+            this.getV().replace(etat, update.get(etat));
+        }
+    }
 	
 	/**
 	 * renvoi l'action executee par l'agent dans l'etat e 
@@ -108,14 +154,9 @@ public class ValueIterationAgent extends PlanningValueAgent{
 	 */
 	@Override
 	public List<Action> getPolitique(Etat _e) {
-		//*** VOTRE CODE
-		
 		// retourne action de meilleure valeur dans _e selon V, 
 		// retourne liste vide si aucune action legale (etat absorbant)
-		List<Action> returnactions = new ArrayList<Action>();
-	
-		return returnactions;
-		
+		return this.returnactions.get(_e);
 	}
 	
 	@Override

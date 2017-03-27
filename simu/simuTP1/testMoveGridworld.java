@@ -18,7 +18,7 @@ public class testMoveGridworld {
         SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
 	
-					GridworldMDP gmdp = GridworldMDP.getBookGrid();
+					GridworldMDP gmdp = GridworldMDP.getCliffGrid();
  
 				GridworldEnvironnement g = new GridworldEnvironnement(gmdp);
 	
