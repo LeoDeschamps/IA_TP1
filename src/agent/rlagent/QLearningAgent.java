@@ -48,10 +48,8 @@ public class QLearningAgent extends RLAgent {
 		if (this.getActionsLegales(e).size() == 0){//etat  absorbant; impossible de le verifier via environnement
 			System.out.println("aucune action legale");
 			return new ArrayList<Action>();
-			
 		}
 
-		//*** VOTRE CODE
 		List<Action> test = this.getActionsLegales(e);
 		int iMax = 0;
 		for(int i = 0; i < test.size(); i++) {

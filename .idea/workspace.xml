@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ccb9b4d0-ace1-4995-a677-6a10b7a6c530" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IA_TP1/agent/rlagent/QLearningAgent.class" afterPath="$PROJECT_DIR$/out/production/IA_TP1/agent/rlagent/QLearningAgent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/IA_TP1/agent/strategy/StrategyGreedy.class" afterPath="$PROJECT_DIR$/out/production/IA_TP1/agent/strategy/StrategyGreedy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java" afterPath="$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java" afterPath="$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,23 +21,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="QLearningAgent.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QLearningAgent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+            <state relative-caret-position="506">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
-                <element signature="e#2632#2648#0" expanded="true" />
+                <element signature="e#3051#3067#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StrategyGreedy.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StrategyGreedy.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+            <state relative-caret-position="186">
+              <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -80,8 +84,8 @@
         <option value="$PROJECT_DIR$/src/rlapproxagent/FeatureFunction.java" />
         <option value="$PROJECT_DIR$/src/rlapproxagent/QLApproxAgent.java" />
         <option value="$PROJECT_DIR$/src/rlapproxagent/FeatureFunctionPacman.java" />
-        <option value="$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java" />
         <option value="$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java" />
+        <option value="$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java" />
       </list>
     </option>
   </component>
@@ -348,7 +352,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30974266" />
   </component>
-  <component name="RunManager" selected="Application.testQLAgentGridworld">
+  <component name="RunManager" selected="Application.testQLCrawler">
     <configuration default="false" name="testValueIterCours" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -397,6 +401,46 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="simuTP2.testQLAgentGridworld" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="IA_TP1" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="testMoveCrawler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="simuTP2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="simuTP2.testMoveCrawler" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="IA_TP1" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="testQLCrawler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="simuTP2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="simuTP2.testQLCrawler" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -824,18 +868,22 @@
       <envs />
       <method />
     </configuration>
-    <list size="5">
+    <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.testValueIterationBridge" />
       <item index="2" class="java.lang.String" itemvalue="Application.testValueIterCours" />
       <item index="3" class="java.lang.String" itemvalue="Application.testValueIterationDiscountGrid" />
       <item index="4" class="java.lang.String" itemvalue="Application.testQLAgentGridworld" />
+      <item index="5" class="java.lang.String" itemvalue="Application.testMoveCrawler" />
+      <item index="6" class="java.lang.String" itemvalue="Application.testQLCrawler" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.testQLAgentGridworld" />
-        <item index="1" class="java.lang.String" itemvalue="Application.testValueIterationDiscountGrid" />
-        <item index="2" class="java.lang.String" itemvalue="Application.testValueIterCours" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.testQLCrawler" />
+        <item index="1" class="java.lang.String" itemvalue="Application.testMoveCrawler" />
+        <item index="2" class="java.lang.String" itemvalue="Application.testQLAgentGridworld" />
+        <item index="3" class="java.lang.String" itemvalue="Application.testValueIterationDiscountGrid" />
+        <item index="4" class="java.lang.String" itemvalue="Application.testValueIterCours" />
       </list>
     </recent_temporary>
   </component>
@@ -853,12 +901,12 @@
       <workItem from="1490723103749" duration="115000" />
       <workItem from="1491201424381" duration="1197000" />
       <workItem from="1491233227818" duration="61000" />
-      <workItem from="1491978766401" duration="8698000" />
+      <workItem from="1491978766401" duration="9239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21298000" />
+    <option name="totallyTimeSpent" value="21839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -903,20 +951,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java</url>
-          <line>35</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
@@ -1241,21 +1275,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java">
+    <entry file="file://$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="506">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#3051#3067#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agent/rlagent/QLearningAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/agent/strategy/StrategyGreedy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
-          <folding>
-            <element signature="e#2632#2648#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="186">
+          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
