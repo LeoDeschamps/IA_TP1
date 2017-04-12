@@ -67,9 +67,13 @@ public class QLearningAgent extends RLAgent {
 	
 	@Override
 	public double getValeur(Etat e) {
-		//*** VOTRE CODE
-		return 0.0;
-		
+		Double maximum = 0.0;
+		for(int i=0; i<qvaleurs.get(e).size(); i++) {
+			if (qvaleurs.get(e).get(i) > maximum) {
+				maximum = qvaleurs.get(e).get(i);
+			}
+		}
+		return maximum;
 	}
 
 	@Override
@@ -106,10 +110,13 @@ public class QLearningAgent extends RLAgent {
 	 */
 	@Override
 	public void endStep(Etat e, Action a, Etat esuivant, double reward) {
+
+
 		if (RLAgent.DISPRL)
 			System.out.println("QL mise a jour etat "+e+" action "+a+" etat' "+esuivant+ " r "+reward);
 
 		//*** VOTRE CODE
+
 	}
 
 	@Override
