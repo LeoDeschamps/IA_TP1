@@ -1,9 +1,6 @@
 package agent.rlagent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javafx.util.Pair;
 import environnement.Action;
@@ -54,7 +51,6 @@ public class QLearningAgent extends RLAgent {
 			
 		}
 		
-		//*** VOTRE CODE
 		return returnactions;
 		
 		
@@ -63,9 +59,15 @@ public class QLearningAgent extends RLAgent {
 	@Override
 	public double getValeur(Etat e) {
 		Double maximum = 0.0;
-		for(int i=0; i<qvaleurs.get(e).size(); i++) {
-			if (qvaleurs.get(e).get(i) > maximum) {
-				maximum = qvaleurs.get(e).get(i);
+		if(qvaleurs.get(e) != null) {
+			Iterator<Action> actions = qvaleurs.get(e).keySet().iterator();
+			while (actions.hasNext()) {
+				Action action = actions.next();
+				if (qvaleurs.get(e).get(action) != null) {
+					if (qvaleurs.get(e).get(action) > maximum) {
+						maximum = qvaleurs.get(e).get(action);
+					}
+				}
 			}
 		}
 		return maximum;
@@ -73,22 +75,35 @@ public class QLearningAgent extends RLAgent {
 
 	@Override
 	public double getQValeur(Etat e, Action a) {
-		//*** VOTRE CODE
-		Double qValeurEtat = this.qvaleurs.get(e).get(a);
-		if(qValeurEtat != null) return qValeurEtat;
-		else return 0;
+		try  {
+			Double qValeurEtat = this.qvaleurs.get(e).get(a);
+			return qValeurEtat;
+		} catch (Exception excpt) {
+			return 0;
+		}
 	}
 	
 	
 	
 	@Override
 	public void setQValeur(Etat e, Action a, double d) {
-		// mise a jour vmax et vmin pour affichage du gradient de couleur:
-				//vmax est la valeur de max pour tout s de V
-				//vmin est la valeur de min pour tout s de V
-				// ...
-		
-		
+		HashMap<Action, Double> listeAction = this.qvaleurs.get(e);
+		if(listeAction != null) {
+			Double val = listeAction.get(a);
+			if(val != null) this.qvaleurs.get(e).remove(a);
+
+			this.qvaleurs.get(e).put(a, d);
+
+		}
+		else {
+			HashMap<Action, Double> soulevade = new HashMap<Action, Double>();
+			soulevade.put(a, new Double(d));
+			this.qvaleurs.put(e, soulevade);
+		}
+
+		if(d > vmax) vmax = d;
+		else if(d < vmin) vmin = d;
+
 		this.notifyObs();
 		
 	}
@@ -109,25 +124,8 @@ public class QLearningAgent extends RLAgent {
 		if (RLAgent.DISPRL)
 			System.out.println("QL mise a jour etat "+e+" action "+a+" etat' "+esuivant+ " r "+reward);
 
-		double t = (1 - this.alpha) * getQValeur(e, a) + this.alpha * (reward + this.gamma * this.getValeur(esuivant));
-
-		HashMap<Action, Double> listeAction = this.qvaleurs.get(e);
-		if(listeAction != null) {
-			Double val = listeAction.get(a);
-
-			if(val != null) {
-				listeAction.remove(a);
-				listeAction.put(a, t);
-			}
-			else {
-				listeAction.put(a, t);
-			}
-		}
-		else {
-			HashMap<Action, Double> soulevade = new HashMap<Action, Double>();
-			soulevade.put(a, new Double(t));
-			this.qvaleurs.put(e, soulevade);
-		}
+		double qval = (1 - this.alpha) * getQValeur(e, a) + this.alpha * (reward + this.gamma * this.getValeur(esuivant));
+		this.setQValeur(e, a, qval);
 	}
 
 	@Override

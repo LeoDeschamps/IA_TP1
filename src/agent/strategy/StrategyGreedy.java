@@ -28,14 +28,12 @@ public class StrategyGreedy extends StrategyExploration{
 	@Override
 	public Action getAction(Etat _e) {//renvoi null si _e absorbant
 		double d =rand.nextDouble();
-		List<Action> actions;
 		if (this.agent.getActionsLegales(_e).isEmpty()){
 			return null;
 		}
-	
-		//VOTRE CODE ICI
-		
-		return null;
+
+		List<Action> actions = this.agent.getPolitique(_e);
+		return actions.get(rand.nextInt(actions.size()));
 	}
 
 	public double getEpsilon() {
