@@ -52,12 +52,19 @@ public class QLearningAgent extends RLAgent {
 		}
 
 		//*** VOTRE CODE
-		returnactions = this.getActionsLegales(e);
-		for(Action a1 : returnactions) {
-			for(Action a2 : returnactions) {
-				if(this.getQValeur(e, a1) > this.getQValeur(e, a2)) {
-					returnactions.remove(a2);
-				}
+		List<Action> test = this.getActionsLegales(e);
+		int iMax = 0;
+		for(int i = 0; i < test.size(); i++) {
+			if(this.getQValeur(e, test.get(i)) > this.getQValeur(e, test.get(iMax))) {
+				iMax = i;
+			}
+		}
+
+		returnactions.add(test.get(iMax));
+
+		for(int i = 0; i < test.size(); i++) {
+			if(i != iMax) {
+				if(this.getQValeur(e, test.get(i)) == this.getQValeur(e, test.get(iMax))) returnactions.add(test.get(i));
 			}
 		}
 		return returnactions;
