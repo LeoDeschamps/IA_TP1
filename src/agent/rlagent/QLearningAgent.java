@@ -3,6 +3,7 @@ package agent.rlagent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.util.Pair;
 import environnement.Action;
@@ -27,22 +28,16 @@ public class QLearningAgent extends RLAgent {
 	 * 
 	 * @param alpha
 	 * @param gamma
-	 * @param Environnement
+	 * @param _env
 	 * @param nbS attention ici il faut tous les etats (meme obstacles) car Q avec tableau ...
 	 * @param nbA
 	 */
-	public QLearningAgent(double alpha, double gamma,
-			Environnement _env) {
+	public QLearningAgent(double alpha, double gamma, Environnement _env) {
 		super(alpha, gamma,_env);
 		qvaleurs = new HashMap<Etat,HashMap<Action,Double>>();
-		
-		
-	
 	}
 
 
-	
-	
 	/**
 	 * renvoi la (les) action(s) de plus forte(s) valeur(s) dans l'etat e
 	 *  (plusieurs actions sont renvoyees si valeurs identiques)
@@ -82,9 +77,6 @@ public class QLearningAgent extends RLAgent {
 	
 	@Override
 	public void setQValeur(Etat e, Action a, double d) {
-		//*** VOTRE CODE
-		
-		
 		// mise a jour vmax et vmin pour affichage du gradient de couleur:
 				//vmax est la valeur de max pour tout s de V
 				//vmin est la valeur de min pour tout s de V
@@ -109,7 +101,25 @@ public class QLearningAgent extends RLAgent {
 		if (RLAgent.DISPRL)
 			System.out.println("QL mise a jour etat "+e+" action "+a+" etat' "+esuivant+ " r "+reward);
 
-		//*** VOTRE CODE
+		double t = (1 - this.alpha) * getQValeur(e, a) + this.alpha * (reward + this.gamma * this.getValeur(esuivant));
+
+		HashMap<Action, Double> listeAction = this.qvaleurs.get(e);
+		if(listeAction != null) {
+			Double val = listeAction.get(a);
+
+			if(val != null) {
+				listeAction.remove(a);
+				listeAction.put(a, t);
+			}
+			else {
+				listeAction.put(a, t);
+			}
+		}
+		else {
+			HashMap<Action, Double> soulevade = new HashMap<Action, Double>();
+			soulevade.put(a, new Double(t));
+			this.qvaleurs.put(e, soulevade);
+		}
 	}
 
 	@Override
