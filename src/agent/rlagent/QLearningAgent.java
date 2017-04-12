@@ -50,7 +50,23 @@ public class QLearningAgent extends RLAgent {
 			return new ArrayList<Action>();
 			
 		}
-		
+
+		//*** VOTRE CODE
+		List<Action> test = this.getActionsLegales(e);
+		int iMax = 0;
+		for(int i = 0; i < test.size(); i++) {
+			if(this.getQValeur(e, test.get(i)) > this.getQValeur(e, test.get(iMax))) {
+				iMax = i;
+			}
+		}
+
+		returnactions.add(test.get(iMax));
+
+		for(int i = 0; i < test.size(); i++) {
+			if(i != iMax) {
+				if(this.getQValeur(e, test.get(i)) == this.getQValeur(e, test.get(iMax))) returnactions.add(test.get(i));
+			}
+		}
 		return returnactions;
 		
 		

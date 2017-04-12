@@ -31,7 +31,6 @@ public class StrategyGreedy extends StrategyExploration{
 		if (this.agent.getActionsLegales(_e).isEmpty()){
 			return null;
 		}
-
 		List<Action> actions = this.agent.getPolitique(_e);
 		return actions.get(rand.nextInt(actions.size()));
 	}
