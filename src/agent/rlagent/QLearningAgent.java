@@ -55,6 +55,14 @@ public class QLearningAgent extends RLAgent {
 		}
 		
 		//*** VOTRE CODE
+		returnactions = this.getActionsLegales(e);
+		for(Action a1 : returnactions) {
+			for(Action a2 : returnactions) {
+				if(this.getQValeur(e, a1) > this.getQValeur(e, a2)) {
+					returnactions.remove(a2);
+				}
+			}
+		}
 		return returnactions;
 		
 		
